@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+    influxdb:
+        image: influxdb:latest
+        container_name: influxdb
+
+    chronograf:
+        container_name: chronograf
+        ports:
+            - '8888:8888'
+        image: chronograf:latest
+        links:
+            - influxdb
+        command: '--influxdb-url=http://influxdb:8086'
+
+    telegraf:
+        container_name: telegraf
+        volumes:
+            - '$PWD/telegraf.conf:/etc/telegraf/telegraf.conf:ro'
+        ports:
+            - '8173:8173'
+        image: telegraf:latest
+        links:
+            - influxdb
