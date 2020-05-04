@@ -3,6 +3,8 @@ services:
     influxdb:
         image: influxdb:latest
         container_name: influxdb
+        ports:
+            - '8068:8086'
 
     chronograf:
         container_name: chronograf
