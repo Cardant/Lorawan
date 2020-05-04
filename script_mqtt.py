@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 from influxdb import InfluxDBClient
 import paho.mqtt.client as mqtt
 
